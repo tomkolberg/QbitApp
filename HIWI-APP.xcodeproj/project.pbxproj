@@ -16,6 +16,7 @@
 		A04155A72811760B00EDEEDE /* HIWI_APPTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04155A62811760B00EDEEDE /* HIWI_APPTests.swift */; };
 		A04155B12811760B00EDEEDE /* HIWI_APPUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04155B02811760B00EDEEDE /* HIWI_APPUITests.swift */; };
 		A04155B32811760B00EDEEDE /* HIWI_APPUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04155B22811760B00EDEEDE /* HIWI_APPUITestsLaunchTests.swift */; };
+		A076C75828253C45006EAC91 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = A076C75728253C45006EAC91 /* Label.swift */; };
 		A077AEAF2812D74D008D1A62 /* QubitVisualization.swift in Sources */ = {isa = PBXBuildFile; fileRef = A077AEAE2812D74C008D1A62 /* QubitVisualization.swift */; };
 		A077AEB12812DD2D008D1A62 /* BottomPlate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A077AEB02812DD2D008D1A62 /* BottomPlate.swift */; };
 /* End PBXBuildFile section */
@@ -51,6 +52,7 @@
 		A04155AC2811760B00EDEEDE /* HIWI-APPUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "HIWI-APPUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A04155B02811760B00EDEEDE /* HIWI_APPUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HIWI_APPUITests.swift; sourceTree = "<group>"; };
 		A04155B22811760B00EDEEDE /* HIWI_APPUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HIWI_APPUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		A076C75728253C45006EAC91 /* Label.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
 		A077AEAE2812D74C008D1A62 /* QubitVisualization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QubitVisualization.swift; sourceTree = "<group>"; };
 		A077AEB02812DD2D008D1A62 /* BottomPlate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomPlate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -112,6 +114,7 @@
 				A04155982811760B00EDEEDE /* Assets.xcassets */,
 				A041559A2811760B00EDEEDE /* LaunchScreen.storyboard */,
 				A041559D2811760B00EDEEDE /* Info.plist */,
+				A076C75728253C45006EAC91 /* Label.swift */,
 			);
 			path = "HIWI-APP";
 			sourceTree = "<group>";
@@ -266,6 +269,7 @@
 			files = (
 				A077AEB12812DD2D008D1A62 /* BottomPlate.swift in Sources */,
 				A04155942811760900EDEEDE /* ViewController.swift in Sources */,
+				A076C75828253C45006EAC91 /* Label.swift in Sources */,
 				A04155902811760900EDEEDE /* AppDelegate.swift in Sources */,
 				A077AEAF2812D74D008D1A62 /* QubitVisualization.swift in Sources */,
 				A04155922811760900EDEEDE /* SceneDelegate.swift in Sources */,

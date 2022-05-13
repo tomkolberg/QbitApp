@@ -158,6 +158,9 @@
                                     <fontDescription key="titleFontDescription" type="system" pointSize="20"/>
                                     <color key="baseBackgroundColor" red="1" green="0.43446542597903437" blue="0.066001109236778266" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="RXPlusButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tlP-8W-z5e"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OYc-Be-sgm">
                                 <rect key="frame" x="75" y="724" width="54" height="49"/>
@@ -168,6 +171,9 @@
                                     <fontDescription key="titleFontDescription" type="system" pointSize="20"/>
                                     <color key="baseBackgroundColor" red="1" green="0.43446542597903437" blue="0.066001109236778266" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="RXMinusButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="aZc-N1-PMj"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MbY-8q-4VR">
                                 <rect key="frame" x="137" y="724" width="54" height="49"/>
@@ -178,6 +184,9 @@
                                     <fontDescription key="titleFontDescription" type="system" pointSize="20"/>
                                     <color key="baseBackgroundColor" red="1" green="0.43446542597903437" blue="0.066001109236778266" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="RYPlusButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lqZ-Zu-NMQ"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B30-Kd-4Md">
                                 <rect key="frame" x="199" y="724" width="54" height="51"/>
@@ -188,6 +197,9 @@
                                     <fontDescription key="titleFontDescription" type="system" pointSize="20"/>
                                     <color key="baseBackgroundColor" red="1" green="0.43446542597903437" blue="0.066001109236778266" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="RYMinusButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2nr-Ss-Hjk"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lhd-SP-zGj">
                                 <rect key="frame" x="323" y="724" width="54" height="51"/>
@@ -198,6 +210,9 @@
                                     <fontDescription key="titleFontDescription" type="system" pointSize="20"/>
                                     <color key="baseBackgroundColor" red="1" green="0.43446542597903437" blue="0.066001109236778266" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="RZMinusButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9Xg-eu-sLI"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eIg-1t-HhK">
                                 <rect key="frame" x="261" y="724" width="54" height="51"/>
@@ -208,6 +223,9 @@
                                     <fontDescription key="titleFontDescription" type="system" pointSize="20"/>
                                     <color key="baseBackgroundColor" red="1" green="0.43446542597903437" blue="0.066001109236778266" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="RZPlusButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fiK-LC-gBi"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1.0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YFw-tl-jqi">
                                 <rect key="frame" x="345" y="174" width="50" height="24"/>
@@ -259,6 +277,7 @@
                     </view>
                     <connections>
                         <outlet property="OutputText" destination="XdT-QN-65C" id="Vtq-Z2-RX1"/>
+                        <outlet property="ParaGateControl" destination="zcs-Bo-OCv" id="yW5-n3-T3b"/>
                         <outlet property="ProbText" destination="qMh-MR-0V9" id="OvK-Vk-eHL"/>
                         <outlet property="probSlider" destination="4PX-TZ-c5W" id="Gux-f2-9PU"/>
                         <outlet property="sceneView" destination="5Qp-4f-iG4" id="KCv-YN-NAm"/>
