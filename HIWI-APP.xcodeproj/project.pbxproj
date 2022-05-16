@@ -16,6 +16,7 @@
 		A04155A72811760B00EDEEDE /* HIWI_APPTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04155A62811760B00EDEEDE /* HIWI_APPTests.swift */; };
 		A04155B12811760B00EDEEDE /* HIWI_APPUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04155B02811760B00EDEEDE /* HIWI_APPUITests.swift */; };
 		A04155B32811760B00EDEEDE /* HIWI_APPUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04155B22811760B00EDEEDE /* HIWI_APPUITestsLaunchTests.swift */; };
+		A04C153D282EAD3D004717D1 /* Complex in Frameworks */ = {isa = PBXBuildFile; productRef = A04C153C282EAD3D004717D1 /* Complex */; };
 		A076C75828253C45006EAC91 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = A076C75728253C45006EAC91 /* Label.swift */; };
 		A077AEAF2812D74D008D1A62 /* QubitVisualization.swift in Sources */ = {isa = PBXBuildFile; fileRef = A077AEAE2812D74C008D1A62 /* QubitVisualization.swift */; };
 		A077AEB12812DD2D008D1A62 /* BottomPlate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A077AEB02812DD2D008D1A62 /* BottomPlate.swift */; };
@@ -62,6 +63,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A04C153D282EAD3D004717D1 /* Complex in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -152,6 +154,9 @@
 			dependencies = (
 			);
 			name = "HIWI-APP";
+			packageProductDependencies = (
+				A04C153C282EAD3D004717D1 /* Complex */,
+			);
 			productName = "HIWI-APP";
 			productReference = A041558C2811760900EDEEDE /* HIWI-APP.app */;
 			productType = "com.apple.product-type.application";
@@ -224,6 +229,9 @@
 				Base,
 			);
 			mainGroup = A04155832811760900EDEEDE;
+			packageReferences = (
+				A04C153B282EAD3D004717D1 /* XCRemoteSwiftPackageReference "swift-complex" */,
+			);
 			productRefGroup = A041558D2811760900EDEEDE /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -610,6 +618,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		A04C153B282EAD3D004717D1 /* XCRemoteSwiftPackageReference "swift-complex" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/dankogai/swift-complex";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A04C153C282EAD3D004717D1 /* Complex */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A04C153B282EAD3D004717D1 /* XCRemoteSwiftPackageReference "swift-complex" */;
+			productName = Complex;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A04155842811760900EDEEDE /* Project object */;
 }

@@ -283,7 +283,7 @@ class ViewController: UIViewController {
     @IBAction func YGateButton(_ sender: UIButton) {
         let Xbuffer = X
         let Ybuffer = Y
-        var yGate: [[Int]] = [[0 ,],[1 , 0]]
+        let yGate = [[0 ,Complex(0,-1)],[Complex(0,1) , 0]]
         
         X = Ybuffer
         Y = Xbuffer
@@ -296,6 +296,7 @@ class ViewController: UIViewController {
      This button turns output value on Z-axis around 180 degree
      */
     @IBAction func ZGateButton(_ sender: UIButton) {
+        let zGate = [[1,0],[0 , -1]]
         if(Y > 0){
             if(Z1 > 0){
                 Z1 = Z1+1
@@ -316,6 +317,8 @@ class ViewController: UIViewController {
     }
     
     @IBAction func HGateButton(_ sender: UIButton) {
+        
+        let hGate = [[1/sqrt(2) ,1/sqrt(2)],[1/sqrt(2) , -1/sqrt(2)]]
         X = 0.5
         Y = 0.5
         
@@ -328,6 +331,7 @@ class ViewController: UIViewController {
      This button turns output value on Z-axis around 90 degree
      */
     @IBAction func SGateButton(_ sender: UIButton) {
+        let sGate = [[1 , 0],[0 , Complex(0,1)]]
         if(Y > 0){
             if(Z1 > 0){
                 Z1 = Z1+0.5
@@ -348,6 +352,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func SPlusGateButton(_ sender: UIButton) {
+        let sPlusGate = [[1 , 0],[0 , Complex(0,-1)]]
         if(Y > 0){
             if(Z1 > 0){
                 Z1 = Z1-0.5
@@ -373,6 +378,7 @@ class ViewController: UIViewController {
      This button turns output value on Z-axis around 45 degree
      */
     @IBAction func TGateButton(_ sender: UIButton) {
+        let tGate = [[1 ,0],[0 , Complex(1/sqrt(2),1/sqrt(2))]]
         
         if(Y > 0){
             if(Z1 > 0){
@@ -394,6 +400,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func TPlusGateButton(_ sender: UIButton) {
+        let tPlusGate = [[1 ,0],[0 , Complex(1/sqrt(2),-1/sqrt(2))]]
         if(Y > 0){
             if(Z1 > 0){
                 Z1 = Z1-0.25
