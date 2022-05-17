@@ -212,10 +212,12 @@ class ViewController: UIViewController {
         node10.geometry = text10
         scene.rootNode.addChildNode(node10)
 
+        
+        //create mainArrow and bottomArrow
+        buildArrows()
 
         // create sceneView
         sceneView.scene = scene
-        
         sceneView.backgroundColor = UIColor.white
         sceneView.allowsCameraControl = true
         
@@ -224,20 +226,19 @@ class ViewController: UIViewController {
         
         
         // Edit Output Text
-        
         OutputText.text = "⎥𝜓⟩ =√" + X.description + " ⏐0⟩ + (√" + Y.description +  " )e^i" + Z1.description + "" + Z2 + "⏐1⟩"
-        
 
     }
-    
-    
+
+    /**
+     Method, that transforms shows the Slidervalue text  above the SliderBar
+     */
     @IBAction func pobSliderBar(_ sender: Any) {
         sliderValueDisplay.text = String(round(probSlider.value)/100)
     }
     
     /**
      Function that changes the Output if the 0-Button is clicked
-     --> Works correctly
      */
     @IBAction func zeroClicked(_ sender: UIButton) {
         X = 1
@@ -259,7 +260,7 @@ class ViewController: UIViewController {
         changeOutput()
     }
     
-    
+    //TODO: Transform Calculations in OutputText
     /**
      Logic behind X Gate Button
      This button turns output value on X-axis around 180 degree
@@ -267,7 +268,7 @@ class ViewController: UIViewController {
     @IBAction func XGateButton(_ sender: UIButton) {
         let Xbuffer = X
         let Ybuffer = Y
-        var xGate: [[Int]] = [[0 , 1],[1 , 0]]
+        var xGate = [[0.0 , 1.0],[1.0 , 0.0]]
         
         
         X = Ybuffer
@@ -278,15 +279,19 @@ class ViewController: UIViewController {
     
     /**
      Logic behind Y Gate Button
-     This button turns output value on Y-axis around 180 degree
+     
+     ArrayShape:    (0 ,                      Complex(0,-1))
+                (Complex(0,1) ,   0                    )
      */
     @IBAction func YGateButton(_ sender: UIButton) {
-        let Xbuffer = X
-        let Ybuffer = Y
-        let yGate = [[0 ,Complex(0,-1)],[Complex(0,1) , 0]]
         
-        X = Ybuffer
-        Y = Xbuffer
+        let complex1 = Complex(0,-1)
+        let complex2 = Complex(0,1)
+        
+        let Xbuffer = X * 0 + X * complex1
+        let Ybuffer = Y * 0 + Y * complex2
+
+        
         changeOutput()
     }
     
@@ -296,31 +301,21 @@ class ViewController: UIViewController {
      This button turns output value on Z-axis around 180 degree
      */
     @IBAction func ZGateButton(_ sender: UIButton) {
-        let zGate = [[1,0],[0 , -1]]
-        if(Y > 0){
-            if(Z1 > 0){
-                Z1 = Z1+1
-                Z2 = "π"
-            } else{
-                Z1 = Z1+1
-                Z2 = "π"
-            }
-        }
+        let zGate = [[1.0 , 0.0],[0.0 , -1.0]]
+        let Xbuffer = X * zGate[0][0] + X * zGate[1][0]
+        let Ybuffer = Y * zGate[0][1] + Y * zGate[1][1]
         
-        if(Z1 >= 2){
-            Z1 = Z1-2
-        }
-        if(Z1 == 0){
-            Z2 = ""
-        }
         changeOutput()
     }
     
+    /**
+     Logic behind Hardamard Gate Button
+     */
     @IBAction func HGateButton(_ sender: UIButton) {
         
         let hGate = [[1/sqrt(2) ,1/sqrt(2)],[1/sqrt(2) , -1/sqrt(2)]]
-        X = 0.5
-        Y = 0.5
+        let Xbuffer = X * hGate[0][0] + X * hGate[1][0]
+        let Ybuffer = Y * hGate[0][1] + Y * hGate[1][1]
         
         changeOutput()
     }
@@ -329,46 +324,30 @@ class ViewController: UIViewController {
     /**
      Logic behind S Gate Button
      This button turns output value on Z-axis around 90 degree
+     
+     ArrayShape:    (1 ,  0                   )
+                (0, Complex(0,1))
      */
     @IBAction func SGateButton(_ sender: UIButton) {
-        let sGate = [[1 , 0],[0 , Complex(0,1)]]
-        if(Y > 0){
-            if(Z1 > 0){
-                Z1 = Z1+0.5
-                Z2 = "π"
-            } else{
-                Z1 = Z1+0.5
-                Z2 = "π"
-            }
-        }
-        
-        if(Z1 >= 2){
-            Z1 = Z1-2
-        }
-        if(Z1 == 0){
-            Z2 = ""
-        }
+        let complex1 = Complex(0,1)
+        let Xbuffer = X * 1 + X * 0
+        let Ybuffer = Y * 0 + Y * complex1
         changeOutput()
     }
     
+    /**
+     Logic behind S Gate Button
+     This button turns output value on Z-axis around 90 degree
+     
+     ArrayShape:    (1 ,  0                   )
+                ( 0, Complex(0,-1))
+     */
     @IBAction func SPlusGateButton(_ sender: UIButton) {
-        let sPlusGate = [[1 , 0],[0 , Complex(0,-1)]]
-        if(Y > 0){
-            if(Z1 > 0){
-                Z1 = Z1-0.5
-                Z2 = "π"
-            } else{
-                Z1 = Z1-0.5
-                Z2 = "π"
-            }
-        }
-        
-        if(Z1 < 0){
-            Z1 = Z1 + 2
-        }
-        if(Z1 == 0){
-            Z2 = ""
-        }
+        let complex1 = Complex(0,-1)
+        let Xbuffer = X * 1 + X * 0
+        let Ybuffer = Y * 0 + Y * complex1
+        changeOutput()
+
 
         changeOutput()
     }
@@ -378,87 +357,117 @@ class ViewController: UIViewController {
      This button turns output value on Z-axis around 45 degree
      */
     @IBAction func TGateButton(_ sender: UIButton) {
-        let tGate = [[1 ,0],[0 , Complex(1/sqrt(2),1/sqrt(2))]]
-        
-        if(Y > 0){
-            if(Z1 > 0){
-                Z1 = Z1+0.25
-                Z2 = "π"
-            } else{
-                Z1 = Z1+0.25
-                Z2 = "π"
-            }
-        }
-        
-        if(Z1 >= 2){
-            Z1 = Z1-2
-        }
-        if(Z1 == 0){
-            Z2 = ""
-        }
-        changeOutput()
-    }
-    
-    @IBAction func TPlusGateButton(_ sender: UIButton) {
-        let tPlusGate = [[1 ,0],[0 , Complex(1/sqrt(2),-1/sqrt(2))]]
-        if(Y > 0){
-            if(Z1 > 0){
-                Z1 = Z1-0.25
-                Z2 = "π"
-            } else{
-                Z1 = Z1-0.25
-                Z2 = "π"
-            }
-        }
-        
-        if(Z1 < 0 ){
-            Z1 = Z1 + 2
-        }
-        if(Z1 == 0){
-            Z2 = ""
-        }
+        let complex1 = Complex(1/sqrt(2),1/sqrt(2))
+        let Xbuffer = X * 1 + X * 0
+        let Ybuffer = Y * 0 + Y * complex1
         changeOutput()
     }
     
     /**
-     Write functions for parametrizable gates, which do the same as the 'normal' gates just for a predifined amount, that is defined in the SegmentContol Element: ParaGateControl
+     Logic behind T Gate Button
+     This button turns output value on Z-axis around - 45 degree
+     */
+    @IBAction func TPlusGateButton(_ sender: UIButton) {
+        let complex1 = Complex(1/sqrt(2),-1/sqrt(2))
+        let Xbuffer = X * 1 + X * 0
+        let Ybuffer = Y * 0 + Y * complex1
+        changeOutput()
+    }
+    
+    /**
+     Logic Behind parametrizable X-Plus Gate, which is dependent on the selected value of the slider
      */
     @IBAction func RXPlusButton(_ sender: UIButton) {
-        print(ParaGateControl.selectedSegmentIndex)
+        if(ParaGateControl.selectedSegmentIndex == 0){     // pi/8
+            let complex1 = Complex(0,-sin(Double.pi/16))
+            let Xbuffer = X * cos(Double.pi / 16) + X * complex1
+            let Ybuffer = Y * complex1 + Y * cos(Double.pi / 16)
+        }else{                                             //pi/12
+            let complex1 = Complex(0,-sin(Double.pi/24))
+            let Xbuffer = X * cos(Double.pi / 24) + X * complex1
+            let Ybuffer = Y * complex1 + Y * cos(Double.pi / 24)
+        }
     }
+    
+    /**
+     Logic Behind parametrizable X -Minus Gate, which is dependent on the selected value of the slider
+     */
     @IBAction func RXMinusButton(_ sender: UIButton) {
+        if(ParaGateControl.selectedSegmentIndex == 0){  // pi/8
+            let complex1 = Complex(0,-sin(-Double.pi/16))
+            let Xbuffer = X * cos(-Double.pi / 16) + X * complex1
+            let Ybuffer = Y * complex1 + Y * cos(-Double.pi / 16)
+            
+        } else {                                        //pi/12
+            let complex1 = Complex(0,-sin(-Double.pi/24))
+            let Xbuffer = X * cos(-Double.pi / 24) + X * complex1
+            let Ybuffer = Y * complex1 + Y * cos(-Double.pi / 24)
+        }
     }
+    
+    /**
+     Logic Behind parametrizable Y-Plus Gate, which is dependent on the selected value of the slider
+     */
     @IBAction func RYPlusButton(_ sender: UIButton) {
+        if(ParaGateControl.selectedSegmentIndex == 0){  // pi/8
+            let Xbuffer = X * cos(Double.pi / 16) + X * sin(Double.pi / 16)
+            let Ybuffer = Y * -sin(Double.pi / 16) + Y * cos(Double.pi / 16)
+            
+        } else {                                        //pi/12
+            let Xbuffer = X * cos(Double.pi / 24) + X * sin(Double.pi / 24)
+            let Ybuffer = Y * -sin(Double.pi / 24) + Y * cos(Double.pi / 24)
+        }
     }
+    
+    /**
+     Logic Behind parametrizable Y-Minus Gate, which is dependent on the selected value of the slider
+     */
     @IBAction func RYMinusButton(_ sender: UIButton) {
+        if(ParaGateControl.selectedSegmentIndex == 0){  // pi/8
+            let Xbuffer = X * cos(-Double.pi / 16) + X * sin(-Double.pi / 16)
+            let Ybuffer = Y * -sin(-Double.pi / 16) + Y * cos(-Double.pi / 16)
+            
+        } else {                                        //pi/12
+            let Xbuffer = X * cos(-Double.pi / 24) + X * sin(-Double.pi / 24)
+            let Ybuffer = Y * -sin(-Double.pi / 24) + Y * cos(-Double.pi / 24)
+        }
     }
+    
+    
+    
+    
+    /**
+     Logic Behind parametrizable Z-Plus Gate, which is dependent on the selected value of the slider
+     */
     @IBAction func RZPlusButton(_ sender: UIButton) {
-        
-        if(Y > 0){
-            if(Z1 > 0){
-                Z1 = Z1+1
-                Z2 = "π"
-            } else{
-                Z1 = Z1+1
-                Z2 = "π"
-            }
-        }
-        
-        if(Z1 >= 2){
-            Z1 = Z1-2
-        }
-        if(Z1 == 0){
-            Z2 = ""
-        }
-        changeOutput()
-        if(ParaGateControl.selectedSegmentIndex == 0){
-            
-        }else{
-            
-        }
+//        if(ParaGateControl.selectedSegmentIndex == 0){  // pi/8
+//
+//            let complex1 = pow(M_E, Complex(0, -(-Double.pi/16)))
+//            let complex2 = pow(M_E, Complex(0, (-Double.pi/16)))
+//
+//            let Xbuffer = X * complex1 + X * 0
+//            let Ybuffer = Y * 0 + Y * complex2
+//
+//        } else {                                        //pi/12
+//            let complex1 = pow(M_E, Complex(0, -(-Double.pi/24)))
+//            let complex2 = pow(M_E, Complex(0, (-Double.pi/24)))
+//
+//            let Xbuffer = X * complex1 + X * 0
+//            let Ybuffer = Y * 0 + Y * complex2
+//        }
     }
+    
+    /**
+     Logic Behind parametrizable Z-Minus Gate, which is dependent on the selected value of the slider
+     */
     @IBAction func RZMinusButton(_ sender: UIButton) {
     }
+    
+    
+    
+    
+    
+    
     
     func changeOutput(){
         let Z1buffer = Z1
@@ -489,27 +498,73 @@ class ViewController: UIViewController {
     }
     
     /**
-     Function that moves the arrows to the correct position if Gates are selected
+     Function that moves the arrows to the correct position if Gates were selected
      */
     func moveArrows(){
-        // Bottom Array ist abhängig von dem Wert der hinter i Steht (Z2)
-        
-        bottomArrow.geometry = SCNBox(width: 1.5, height: 0.1, length: 0.1, chamferRadius: 0.0)
-        bottomArrow.geometry?.firstMaterial?.diffuse.contents = UIColor.red
-        bottomArrow.position = SCNVector3(x:-0.8, y: -2.48, z:0)
-        bottomArrow.rotation = SCNVector4Make(0, 180, 0, 1)
-        
-        // wird gemacht über y und w wert (2,4)
-        // zusätzlich kann man die position anpassen um den Pfeilwieder in die Mitte zu Holen
-        
-        self.scene.rootNode.addChildNode(bottomArrow)
-        
-        
-        // main Arrow ist abhänhih von dem Wert der gesamtn Gleichung
+
+        bottomArrow.rotation = SCNVector4Make(0, 1, 0, Float(Double.pi)) // Rotates the Arrow
+        mainArrow.rotation = SCNVector4Make(1, 1, 0, Float(Double.pi)) // Rotates the Arrow
     }
+
     
-    
-    
+    /**
+     Method that builds the arrows within the scene
+     */
+    func buildArrows(){
+        //Create Arrow:
+        //(Source: https://stackoverflow.com/questions/47191068/how-to-draw-an-arrow-in-scenekit)
+        
+        let vertcount = 48;
+        let verts: [Float] = [ -1.4923, 1.1824, 2.5000, -6.4923, 0.000, 0.000, -1.4923, -1.1824, 2.5000, 4.6077, -0.5812, 1.6800, 4.6077, -0.5812, -1.6800, 4.6077, 0.5812, -1.6800, 4.6077, 0.5812, 1.6800, -1.4923, -1.1824, -2.5000, -1.4923, 1.1824, -2.5000, -1.4923, 0.4974, -0.9969, -1.4923, 0.4974, 0.9969, -1.4923, -0.4974, 0.9969, -1.4923, -0.4974, -0.9969 ];
+
+        let facecount = 13;
+        let faces: [CInt] = [  3, 4, 3, 3, 3, 4, 4, 4, 4, 4, 4, 4, 4, 0, 1, 2, 3, 4, 5, 6, 7, 1, 8, 8, 1, 0, 2, 1, 7, 9, 8, 0, 10, 10, 0, 2, 11, 11, 2, 7, 12, 12, 7, 8, 9, 9, 5, 4, 12, 10, 6, 5, 9, 11, 3, 6, 10, 12, 4, 3, 11 ];
+
+        let vertsData  = NSData(
+            bytes: verts,
+            length: MemoryLayout<Float>.size * vertcount
+        )
+
+        let vertexSource = SCNGeometrySource(data: vertsData as Data,
+                                            semantic: .vertex,
+                                            vectorCount: vertcount,
+                                            usesFloatComponents: true,
+                                            componentsPerVector: 3,
+                                            bytesPerComponent: MemoryLayout<Float>.size,
+                                            dataOffset: 0,
+                                            dataStride: MemoryLayout<Float>.size * 3)
+
+        let polyIndexCount = 61;
+        let indexPolyData  = NSData( bytes: faces, length: MemoryLayout<CInt>.size * polyIndexCount )
+
+        let element1 = SCNGeometryElement(data: indexPolyData as Data,
+                                        primitiveType: .polygon,
+                                        primitiveCount: facecount,
+                                        bytesPerIndex: MemoryLayout<CInt>.size)
+
+        let geometry1 = SCNGeometry(sources: [vertexSource], elements: [element1])
+
+        let material1 = geometry1.firstMaterial!
+
+        material1.diffuse.contents = UIColor.blue
+        
+        
+        //Build mainArrow:
+        mainArrow.geometry = geometry1
+        mainArrow.scale = SCNVector3(0.2, 0.1, 0.05) // change size of Arrow
+        mainArrow.position = SCNVector3(x:0, y: 0, z:0)
+        self.scene.rootNode.addChildNode(mainArrow)
+        
+        // Build bottomArrow
+        let geometry2 = SCNGeometry(sources: [vertexSource], elements: [element1])
+        let material2 = geometry2.firstMaterial!
+        material2.diffuse.contents = UIColor.red // change color of bottomArrow
+        
+        bottomArrow.geometry = geometry2
+        bottomArrow.scale = SCNVector3(0.2, 0.05, 0.05) // change size of Arrow
+        bottomArrow.position = SCNVector3(x:0, y: -2.5, z:0)
+        self.scene.rootNode.addChildNode(bottomArrow)
+    }
     
 }
 
