@@ -90,13 +90,6 @@
                                     <segment title="𝜽 = π/12"/>
                                 </segments>
                             </segmentedControl>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Output Text" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XdT-QN-65C" userLabel="⎥𝜓 ⟩ =√0.50 ⎥0⟩ + (√0.50 )e^(5/2)⎥1⟩">
-                                <rect key="frame" x="16" y="99" width="358" height="23"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bSN-ZF-9Hu">
                                 <rect key="frame" x="118" y="620" width="54" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -276,7 +269,6 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <connections>
-                        <outlet property="OutputText" destination="XdT-QN-65C" id="Vtq-Z2-RX1"/>
                         <outlet property="ParaGateControl" destination="zcs-Bo-OCv" id="yW5-n3-T3b"/>
                         <outlet property="ProbText" destination="qMh-MR-0V9" id="OvK-Vk-eHL"/>
                         <outlet property="probSlider" destination="4PX-TZ-c5W" id="Gux-f2-9PU"/>

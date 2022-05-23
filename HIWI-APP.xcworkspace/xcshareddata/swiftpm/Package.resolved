@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "Complex",
+        "repositoryURL": "https://github.com/dankogai/swift-complex",
+        "state": {
+          "branch": null,
+          "revision": "af6cf0d3cbcb3b7bacb9c4785d96fded5e95e52a",
+          "version": "5.0.0"
+        }
+      }
+    ]
+  },
+  "version": 1
+}

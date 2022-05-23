@@ -8,6 +8,7 @@
 import UIKit
 import SceneKit
 import Complex
+import iosMath
 
 class ViewController: UIViewController {
     
@@ -16,9 +17,10 @@ class ViewController: UIViewController {
     @IBOutlet weak var probSlider: UISlider!
     @IBOutlet weak var sceneView: SCNView!
     @IBOutlet weak var ProbText: UILabel!
-    @IBOutlet weak var OutputText: UILabel!
     @IBOutlet weak var ParaGateControl: UISegmentedControl!
     
+    let output : MTMathUILabel = MTMathUILabel()
+
     
     //--Create Variables for Output
     var X = 1.0
@@ -40,6 +42,7 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
         sceneView.layer.zPosition = -100
 
         let cameraNode = SCNNode()
@@ -223,10 +226,18 @@ class ViewController: UIViewController {
         
         // Slider transformation
         probSlider.transform = CGAffineTransform(rotationAngle: (CGFloat.pi / -2))
+
+
         
         
+        //Create Output equasion
         // Edit Output Text
-        OutputText.text = "⎥𝜓⟩ =√" + X.description + " ⏐0⟩ + (√" + Y.description +  " )e^i" + Z1.description + "" + Z2 + "⏐1⟩"
+        let text = " \\mid \\!\\! \\Psi \\!\\! > = \\sqrt{" + X.description + "} \\mid \\! 0 \\! > +  ( \\sqrt{" + Y.description + "}) e^{i^{" + Z1.description + Z2 + "}} \\mid \\! 1 \\! >"
+        output.latex = text
+        view.addSubview(output)
+        output.frame = CGRect(x: 40, y:100, width: 0 , height: 0)
+        output.sizeToFit()
+
 
     }
 
@@ -470,12 +481,16 @@ class ViewController: UIViewController {
     
     
     func changeOutput(){
+        
+
         let Z1buffer = Z1
         if(Z1buffer == 1.0){
-            OutputText.text = "⎥𝜓⟩ =√" + X.description + " ⏐0⟩ + (√" + Y.description +  " )e^i^" + Z2.description + "⏐1⟩"
+            let text = " \\mid \\!\\! \\Psi \\!\\! > = \\sqrt{" + X.description + "} \\mid \\! 0 \\! > +  ( \\sqrt{" + Y.description + "}) e^{i^{" + Z2.description + "}} \\mid \\! 1 \\! >"
+            output.latex = text
         }
         else{
-            OutputText.text = "⎥𝜓⟩ =√" + X.description + " ⏐0⟩ + (√" + Y.description +  " )e^i" + Z1buffer.description + Z2.description + "⏐1⟩"
+            let text = " \\mid \\!\\! \\Psi \\!\\! > = \\sqrt{" + X.description + "} \\mid \\! 0 \\! > +  ( \\sqrt{" + Y.description + "}) e^{i^{" + Z1buffer.description + Z2.description + "}} \\mid \\! 1 \\! >"
+            output.latex = text
         }
 
         

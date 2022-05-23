@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D5A5125B1E4A22B5BD5E022 /* Pods_HIWI_APP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97EC8CA7320C2D642CB47CB0 /* Pods_HIWI_APP.framework */; };
+		808A111B51D92D139C979C5E /* Pods_HIWI_APP_HIWI_APPUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A71D5E13266009A9DEA4A87F /* Pods_HIWI_APP_HIWI_APPUITests.framework */; };
+		8E2B977F40C65A145C91D389 /* Pods_HIWI_APPTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 367A96F8E96E7832FE030424 /* Pods_HIWI_APPTests.framework */; };
 		A04155902811760900EDEEDE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A041558F2811760900EDEEDE /* AppDelegate.swift */; };
 		A04155922811760900EDEEDE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04155912811760900EDEEDE /* SceneDelegate.swift */; };
 		A04155942811760900EDEEDE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04155932811760900EDEEDE /* ViewController.swift */; };
@@ -40,6 +43,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		29580AE4EEF326AB6EF8DD16 /* Pods-HIWI-APP-HIWI-APPUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HIWI-APP-HIWI-APPUITests.debug.xcconfig"; path = "Target Support Files/Pods-HIWI-APP-HIWI-APPUITests/Pods-HIWI-APP-HIWI-APPUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		297392AE2CE0C17455CA65C4 /* Pods-HIWI-APP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HIWI-APP.release.xcconfig"; path = "Target Support Files/Pods-HIWI-APP/Pods-HIWI-APP.release.xcconfig"; sourceTree = "<group>"; };
+		367A96F8E96E7832FE030424 /* Pods_HIWI_APPTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HIWI_APPTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		97EC8CA7320C2D642CB47CB0 /* Pods_HIWI_APP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HIWI_APP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A041558C2811760900EDEEDE /* HIWI-APP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "HIWI-APP.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A041558F2811760900EDEEDE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A04155912811760900EDEEDE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -56,6 +63,11 @@
 		A076C75728253C45006EAC91 /* Label.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
 		A077AEAE2812D74C008D1A62 /* QubitVisualization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QubitVisualization.swift; sourceTree = "<group>"; };
 		A077AEB02812DD2D008D1A62 /* BottomPlate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomPlate.swift; sourceTree = "<group>"; };
+		A71D5E13266009A9DEA4A87F /* Pods_HIWI_APP_HIWI_APPUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HIWI_APP_HIWI_APPUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B6A85A96418618C578F17CBD /* Pods-HIWI-APPTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HIWI-APPTests.debug.xcconfig"; path = "Target Support Files/Pods-HIWI-APPTests/Pods-HIWI-APPTests.debug.xcconfig"; sourceTree = "<group>"; };
+		D4BFD9D78CB3CDF0E8927EEF /* Pods-HIWI-APP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HIWI-APP.debug.xcconfig"; path = "Target Support Files/Pods-HIWI-APP/Pods-HIWI-APP.debug.xcconfig"; sourceTree = "<group>"; };
+		DF702C69C4F45F5968C20D31 /* Pods-HIWI-APPTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HIWI-APPTests.release.xcconfig"; path = "Target Support Files/Pods-HIWI-APPTests/Pods-HIWI-APPTests.release.xcconfig"; sourceTree = "<group>"; };
+		E23AF646AE4245538495637A /* Pods-HIWI-APP-HIWI-APPUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HIWI-APP-HIWI-APPUITests.release.xcconfig"; path = "Target Support Files/Pods-HIWI-APP-HIWI-APPUITests/Pods-HIWI-APP-HIWI-APPUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +76,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A04C153D282EAD3D004717D1 /* Complex in Frameworks */,
+				1D5A5125B1E4A22B5BD5E022 /* Pods_HIWI_APP.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -71,6 +84,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E2B977F40C65A145C91D389 /* Pods_HIWI_APPTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,12 +92,23 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				808A111B51D92D139C979C5E /* Pods_HIWI_APP_HIWI_APPUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		34DC049E88E3159256DFEA9F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				97EC8CA7320C2D642CB47CB0 /* Pods_HIWI_APP.framework */,
+				A71D5E13266009A9DEA4A87F /* Pods_HIWI_APP_HIWI_APPUITests.framework */,
+				367A96F8E96E7832FE030424 /* Pods_HIWI_APPTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		A04155832811760900EDEEDE = {
 			isa = PBXGroup;
 			children = (
@@ -91,6 +116,8 @@
 				A04155A52811760B00EDEEDE /* HIWI-APPTests */,
 				A04155AF2811760B00EDEEDE /* HIWI-APPUITests */,
 				A041558D2811760900EDEEDE /* Products */,
+				FF7371CEE6C4B2A2B9B1D4BE /* Pods */,
+				34DC049E88E3159256DFEA9F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -138,6 +165,20 @@
 			path = "HIWI-APPUITests";
 			sourceTree = "<group>";
 		};
+		FF7371CEE6C4B2A2B9B1D4BE /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D4BFD9D78CB3CDF0E8927EEF /* Pods-HIWI-APP.debug.xcconfig */,
+				297392AE2CE0C17455CA65C4 /* Pods-HIWI-APP.release.xcconfig */,
+				29580AE4EEF326AB6EF8DD16 /* Pods-HIWI-APP-HIWI-APPUITests.debug.xcconfig */,
+				E23AF646AE4245538495637A /* Pods-HIWI-APP-HIWI-APPUITests.release.xcconfig */,
+				B6A85A96418618C578F17CBD /* Pods-HIWI-APPTests.debug.xcconfig */,
+				DF702C69C4F45F5968C20D31 /* Pods-HIWI-APPTests.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -145,9 +186,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A04155B62811760B00EDEEDE /* Build configuration list for PBXNativeTarget "HIWI-APP" */;
 			buildPhases = (
+				DB7E8435AAF4448E264E34B6 /* [CP] Check Pods Manifest.lock */,
 				A04155882811760900EDEEDE /* Sources */,
 				A04155892811760900EDEEDE /* Frameworks */,
 				A041558A2811760900EDEEDE /* Resources */,
+				96A39ACD11FA38013DF6E8EB /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -165,6 +208,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A04155B92811760B00EDEEDE /* Build configuration list for PBXNativeTarget "HIWI-APPTests" */;
 			buildPhases = (
+				EE165EF5F7EA2A38F7D69A7C /* [CP] Check Pods Manifest.lock */,
 				A041559E2811760B00EDEEDE /* Sources */,
 				A041559F2811760B00EDEEDE /* Frameworks */,
 				A04155A02811760B00EDEEDE /* Resources */,
@@ -183,9 +227,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A04155BC2811760B00EDEEDE /* Build configuration list for PBXNativeTarget "HIWI-APPUITests" */;
 			buildPhases = (
+				9085CF1BF3CC4C417E821738 /* [CP] Check Pods Manifest.lock */,
 				A04155A82811760B00EDEEDE /* Sources */,
 				A04155A92811760B00EDEEDE /* Frameworks */,
 				A04155AA2811760B00EDEEDE /* Resources */,
+				C532C014D2E53F7A8F792CB2 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -269,6 +315,109 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		9085CF1BF3CC4C417E821738 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-HIWI-APP-HIWI-APPUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		96A39ACD11FA38013DF6E8EB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-HIWI-APP/Pods-HIWI-APP-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-HIWI-APP/Pods-HIWI-APP-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-HIWI-APP/Pods-HIWI-APP-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C532C014D2E53F7A8F792CB2 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-HIWI-APP-HIWI-APPUITests/Pods-HIWI-APP-HIWI-APPUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-HIWI-APP-HIWI-APPUITests/Pods-HIWI-APP-HIWI-APPUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-HIWI-APP-HIWI-APPUITests/Pods-HIWI-APP-HIWI-APPUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DB7E8435AAF4448E264E34B6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-HIWI-APP-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EE165EF5F7EA2A38F7D69A7C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-HIWI-APPTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		A04155882811760900EDEEDE /* Sources */ = {
@@ -454,6 +603,7 @@
 		};
 		A04155B72811760B00EDEEDE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D4BFD9D78CB3CDF0E8927EEF /* Pods-HIWI-APP.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -481,6 +631,7 @@
 		};
 		A04155B82811760B00EDEEDE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 297392AE2CE0C17455CA65C4 /* Pods-HIWI-APP.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -508,6 +659,7 @@
 		};
 		A04155BA2811760B00EDEEDE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B6A85A96418618C578F17CBD /* Pods-HIWI-APPTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -527,6 +679,7 @@
 		};
 		A04155BB2811760B00EDEEDE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DF702C69C4F45F5968C20D31 /* Pods-HIWI-APPTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -546,6 +699,7 @@
 		};
 		A04155BD2811760B00EDEEDE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 29580AE4EEF326AB6EF8DD16 /* Pods-HIWI-APP-HIWI-APPUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -563,6 +717,7 @@
 		};
 		A04155BE2811760B00EDEEDE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E23AF646AE4245538495637A /* Pods-HIWI-APP-HIWI-APPUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
