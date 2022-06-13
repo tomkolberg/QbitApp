@@ -23,10 +23,13 @@ class ViewController: UIViewController {
 
     
     //--Create Variables for Output
-    var X = 1.0
-    var Y = 0.0
+    var X = Complex(1,0)
+    var Y = Complex(0,0)
     var Z1 = 0.0
     var Z2 = ""
+    
+    var prob0 = 1.0
+    var prob1 = 0.0
     
     // create scene for the qubit visualization
     let scene = SCNScene()
@@ -232,7 +235,7 @@ class ViewController: UIViewController {
         
         //Create Output equasion
         // Edit Output Text
-        let text = " \\mid \\!\\! \\Psi \\!\\! > = \\sqrt{" + X.description + "} \\mid \\! 0 \\! > +  ( \\sqrt{" + Y.description + "}) e^{i^{" + Z1.description + Z2 + "}} \\mid \\! 1 \\! >"
+        let text = " \\mid \\!\\! \\Psi \\!\\! > = \\sqrt{" + X.real.description + "} \\mid \\! 0 \\! > +  ( \\sqrt{" + Y.real.description + "}) e^{i^{" + Z1.description + Z2 + "}} \\mid \\! 1 \\! >"
         output.latex = text
         view.addSubview(output)
         output.frame = CGRect(x: 40, y:100, width: 0 , height: 0)
@@ -252,10 +255,9 @@ class ViewController: UIViewController {
      Function that changes the Output if the 0-Button is clicked
      */
     @IBAction func zeroClicked(_ sender: UIButton) {
-        X = 1
-        Y = 0
-        Z1 = 0.0
-        Z2 = ""
+        X = Complex(1,0)
+        Y = Complex(0,0)
+
         changeOutput()
     }
     
@@ -264,10 +266,9 @@ class ViewController: UIViewController {
      --> Works correctly
      */
     @IBAction func oneButtonClicked(_ sender: UIButton) {
-        X = 0
-        Y = 1
-        Z1 = 0.0
-        Z2 = ""
+        X = Complex(0,0)
+        Y = Complex(1,0)
+        
         changeOutput()
     }
     
@@ -277,13 +278,12 @@ class ViewController: UIViewController {
      This button turns output value on X-axis around 180 degree
      */
     @IBAction func XGateButton(_ sender: UIButton) {
-        let Xbuffer = X
-        let Ybuffer = Y
-        var xGate = [[0.0 , 1.0],[1.0 , 0.0]]
-        
-        
-        X = Ybuffer
-        Y = Xbuffer
+
+        let Xbuffer = 0.0 * X + 1.0 * Y
+        let Ybuffer = 1.0 * X + 0.0 * Y
+
+        X = Xbuffer
+        Y = Ybuffer
         changeOutput()
     }
     
@@ -299,10 +299,12 @@ class ViewController: UIViewController {
         let complex1 = Complex(0,-1)
         let complex2 = Complex(0,1)
         
-        let Xbuffer = X * 0 + X * complex1
-        let Ybuffer = Y * 0 + Y * complex2
-
+        let Xbuffer = X * 0 + Y * complex2
+        let Ybuffer = X * complex1 + Y * 0
         
+        X = Xbuffer
+        Y = Ybuffer
+
         changeOutput()
     }
     
@@ -313,8 +315,11 @@ class ViewController: UIViewController {
      */
     @IBAction func ZGateButton(_ sender: UIButton) {
         let zGate = [[1.0 , 0.0],[0.0 , -1.0]]
-        let Xbuffer = X * zGate[0][0] + X * zGate[1][0]
-        let Ybuffer = Y * zGate[0][1] + Y * zGate[1][1]
+        let Xbuffer = X * zGate[0][0] + Y * zGate[1][0]
+        let Ybuffer = X * zGate[0][1] + Y * zGate[1][1]
+        
+        X = Xbuffer
+        Y = Ybuffer
         
         changeOutput()
     }
@@ -325,8 +330,12 @@ class ViewController: UIViewController {
     @IBAction func HGateButton(_ sender: UIButton) {
         
         let hGate = [[1/sqrt(2) ,1/sqrt(2)],[1/sqrt(2) , -1/sqrt(2)]]
-        let Xbuffer = X * hGate[0][0] + X * hGate[1][0]
-        let Ybuffer = Y * hGate[0][1] + Y * hGate[1][1]
+        let Xbuffer = X * hGate[0][0] + Y * hGate[1][0]
+        let Ybuffer = X * hGate[0][1] + Y * hGate[1][1]
+        
+        X = Xbuffer
+        Y = Ybuffer
+
         
         changeOutput()
     }
@@ -341,8 +350,12 @@ class ViewController: UIViewController {
      */
     @IBAction func SGateButton(_ sender: UIButton) {
         let complex1 = Complex(0,1)
-        let Xbuffer = X * 1 + X * 0
-        let Ybuffer = Y * 0 + Y * complex1
+        let Xbuffer = X * 1 + Y * 0
+        let Ybuffer = X * 0 + Y * complex1
+        
+        X = Xbuffer
+        Y = Ybuffer
+
         changeOutput()
     }
     
@@ -355,11 +368,11 @@ class ViewController: UIViewController {
      */
     @IBAction func SPlusGateButton(_ sender: UIButton) {
         let complex1 = Complex(0,-1)
-        let Xbuffer = X * 1 + X * 0
-        let Ybuffer = Y * 0 + Y * complex1
-        changeOutput()
+        let Xbuffer = X * 1 + Y * 0
+        let Ybuffer = X * 0 + Y * complex1
 
-
+        X = Xbuffer
+        Y = Ybuffer
         changeOutput()
     }
     
@@ -369,8 +382,11 @@ class ViewController: UIViewController {
      */
     @IBAction func TGateButton(_ sender: UIButton) {
         let complex1 = Complex(1/sqrt(2),1/sqrt(2))
-        let Xbuffer = X * 1 + X * 0
-        let Ybuffer = Y * 0 + Y * complex1
+        let Xbuffer = X * 1 + Y * 0
+        let Ybuffer = X * 0 + Y * complex1
+
+        X = Xbuffer
+        Y = Ybuffer
         changeOutput()
     }
     
@@ -380,8 +396,11 @@ class ViewController: UIViewController {
      */
     @IBAction func TPlusGateButton(_ sender: UIButton) {
         let complex1 = Complex(1/sqrt(2),-1/sqrt(2))
-        let Xbuffer = X * 1 + X * 0
-        let Ybuffer = Y * 0 + Y * complex1
+        let Xbuffer = X * 1 + Y * 0
+        let Ybuffer = X * 0 + Y * complex1
+        
+        X = Xbuffer
+        Y = Ybuffer
         changeOutput()
     }
     
@@ -389,15 +408,24 @@ class ViewController: UIViewController {
      Logic Behind parametrizable X-Plus Gate, which is dependent on the selected value of the slider
      */
     @IBAction func RXPlusButton(_ sender: UIButton) {
+        
         if(ParaGateControl.selectedSegmentIndex == 0){     // pi/8
             let complex1 = Complex(0,-sin(Double.pi/16))
-            let Xbuffer = X * cos(Double.pi / 16) + X * complex1
-            let Ybuffer = Y * complex1 + Y * cos(Double.pi / 16)
+            let Xbuffer = X * cos(Double.pi / 16) + Y * complex1
+            let Ybuffer = X * complex1 + Y * cos(Double.pi / 16)
+            
+            X = Xbuffer
+            Y = Ybuffer
         }else{                                             //pi/12
             let complex1 = Complex(0,-sin(Double.pi/24))
-            let Xbuffer = X * cos(Double.pi / 24) + X * complex1
-            let Ybuffer = Y * complex1 + Y * cos(Double.pi / 24)
+            let Xbuffer = X * cos(Double.pi / 24) + Y * complex1
+            let Ybuffer = X * complex1 + Y * cos(Double.pi / 24)
+            
+            X = Xbuffer
+            Y = Ybuffer
         }
+
+        changeOutput()
     }
     
     /**
@@ -406,14 +434,22 @@ class ViewController: UIViewController {
     @IBAction func RXMinusButton(_ sender: UIButton) {
         if(ParaGateControl.selectedSegmentIndex == 0){  // pi/8
             let complex1 = Complex(0,-sin(-Double.pi/16))
-            let Xbuffer = X * cos(-Double.pi / 16) + X * complex1
-            let Ybuffer = Y * complex1 + Y * cos(-Double.pi / 16)
+            let Xbuffer = X * cos(-Double.pi / 16) + Y * complex1
+            let Ybuffer = X * complex1 + Y * cos(-Double.pi / 16)
+            
+            X = Xbuffer
+            Y = Ybuffer
             
         } else {                                        //pi/12
             let complex1 = Complex(0,-sin(-Double.pi/24))
-            let Xbuffer = X * cos(-Double.pi / 24) + X * complex1
-            let Ybuffer = Y * complex1 + Y * cos(-Double.pi / 24)
+            let Xbuffer = X * cos(-Double.pi / 24) + Y * complex1
+            let Ybuffer = X * complex1 + Y * cos(-Double.pi / 24)
+            
+            X = Xbuffer
+            Y = Ybuffer
         }
+        
+        changeOutput()
     }
     
     /**
@@ -421,13 +457,20 @@ class ViewController: UIViewController {
      */
     @IBAction func RYPlusButton(_ sender: UIButton) {
         if(ParaGateControl.selectedSegmentIndex == 0){  // pi/8
-            let Xbuffer = X * cos(Double.pi / 16) + X * sin(Double.pi / 16)
-            let Ybuffer = Y * -sin(Double.pi / 16) + Y * cos(Double.pi / 16)
+            let Xbuffer = X * cos(Double.pi / 16) + Y * sin(Double.pi / 16)
+            let Ybuffer = X * -sin(Double.pi / 16) + Y * cos(Double.pi / 16)
+            
+            X = Xbuffer
+            Y = Ybuffer
             
         } else {                                        //pi/12
-            let Xbuffer = X * cos(Double.pi / 24) + X * sin(Double.pi / 24)
-            let Ybuffer = Y * -sin(Double.pi / 24) + Y * cos(Double.pi / 24)
+            let Xbuffer = X * cos(Double.pi / 24) + Y * sin(Double.pi / 24)
+            let Ybuffer = X * -sin(Double.pi / 24) + Y * cos(Double.pi / 24)
+            
+            X = Xbuffer
+            Y = Ybuffer
         }
+        changeOutput()
     }
     
     /**
@@ -435,13 +478,20 @@ class ViewController: UIViewController {
      */
     @IBAction func RYMinusButton(_ sender: UIButton) {
         if(ParaGateControl.selectedSegmentIndex == 0){  // pi/8
-            let Xbuffer = X * cos(-Double.pi / 16) + X * sin(-Double.pi / 16)
-            let Ybuffer = Y * -sin(-Double.pi / 16) + Y * cos(-Double.pi / 16)
+            let Xbuffer = X * cos(-Double.pi / 16) + Y * sin(-Double.pi / 16)
+            let Ybuffer = X * -sin(-Double.pi / 16) + Y * cos(-Double.pi / 16)
+            
+            X = Xbuffer
+            Y = Ybuffer
             
         } else {                                        //pi/12
-            let Xbuffer = X * cos(-Double.pi / 24) + X * sin(-Double.pi / 24)
-            let Ybuffer = Y * -sin(-Double.pi / 24) + Y * cos(-Double.pi / 24)
+            let Xbuffer = X * cos(-Double.pi / 24) + Y * sin(-Double.pi / 24)
+            let Ybuffer = X * -sin(-Double.pi / 24) + Y * cos(-Double.pi / 24)
+            
+            X = Xbuffer
+            Y = Ybuffer
         }
+        changeOutput()
     }
     
     
@@ -449,22 +499,30 @@ class ViewController: UIViewController {
     
     /**
      Logic Behind parametrizable Z-Plus Gate, which is dependent on the selected value of the slider
+     
+     //TODO: Not WORKING because of Complex numbers
      */
     @IBAction func RZPlusButton(_ sender: UIButton) {
 //        if(ParaGateControl.selectedSegmentIndex == 0){  // pi/8
 //
-//            let complex1 = pow(M_E, Complex(0, -(-Double.pi/16)))
-//            let complex2 = pow(M_E, Complex(0, (-Double.pi/16)))
+//            let complex1 = pow(M_E, Complex(0, -(-Double.pi/16.0)))
+//            let complex2 = pow(M_E, Complex(0, (-Double.pi/16.0)))
 //
-//            let Xbuffer = X * complex1 + X * 0
-//            let Ybuffer = Y * 0 + Y * complex2
+//            let Xbuffer = X * complex1 + Y * 0
+//            let Ybuffer = X * 0 + Y * complex2
+//
+//            X = Xbuffer
+//            Y = Ybuffer
 //
 //        } else {                                        //pi/12
 //            let complex1 = pow(M_E, Complex(0, -(-Double.pi/24)))
 //            let complex2 = pow(M_E, Complex(0, (-Double.pi/24)))
 //
-//            let Xbuffer = X * complex1 + X * 0
-//            let Ybuffer = Y * 0 + Y * complex2
+//            let Xbuffer = X * complex1 + Y * 0
+//            let Ybuffer = X * 0 + Y * complex2
+//
+//            X = Xbuffer
+//            Y = Ybuffer
 //        }
     }
     
@@ -489,13 +547,13 @@ class ViewController: UIViewController {
             output.latex = text
         }
         else{
-            let text = " \\mid \\!\\! \\Psi \\!\\! > = \\sqrt{" + X.description + "} \\mid \\! 0 \\! > +  ( \\sqrt{" + Y.description + "}) e^{i^{" + Z1buffer.description + Z2.description + "}} \\mid \\! 1 \\! >"
+            let text = " \\mid \\!\\! \\Psi \\!\\! > = \\sqrt{" + X.real.description + "} \\mid \\! 0 \\! > +  ( \\sqrt{" + Y.real.description + "}) e^{i^{" + Z1buffer.description + Z2.description + "}} \\mid \\! 1 \\! >"
             output.latex = text
         }
 
-        
-        probSlider.value = Float(X*100)
-        sliderValueDisplay.text = String(X)
+        print("Result: " , X , "  and  ", Y)
+        probSlider.value = Float(X.real*100)
+        sliderValueDisplay.text = String(X.real)
         changeBottomPlate()
         moveArrows()
     }
@@ -504,7 +562,7 @@ class ViewController: UIViewController {
      Function, that changes the of the pobability plate within the bottom plate
      */
     func changeBottomPlate(){
-        let radius = 1.3*X
+        let radius = 1.3*X.real
         probCircle.geometry = SCNCylinder(radius: radius, height: 0.02)
         probCircle.geometry?.firstMaterial?.diffuse.contents = UIColor.black
         probCircle.opacity = 0.5
@@ -579,6 +637,14 @@ class ViewController: UIViewController {
         bottomArrow.scale = SCNVector3(0.2, 0.05, 0.05) // change size of Arrow
         bottomArrow.position = SCNVector3(x:0, y: -2.5, z:0)
         self.scene.rootNode.addChildNode(bottomArrow)
+    }
+    
+    func getProbability0()->Double{
+        return pow(abs(prob0), 2)
+    }
+    
+    func getProbability1()->Double{
+        return pow(abs(prob1),2)
     }
     
 }
