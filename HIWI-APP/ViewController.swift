@@ -542,20 +542,41 @@ class ViewController: UIViewController {
         
 
         let Z1buffer = Z1
+        
+        // Round Output
+        let ZeroOutput = round((X.real * X.real + X.imag * X.imag ) * 100)/100
+        let OneOutput = round((Y.real * Y.real + Y.imag * Y.imag ) * 100)/100
+        
+    
+        // Create Output
         if(Z1buffer == 1.0){
-            let text = " \\mid \\!\\! \\Psi \\!\\! > = \\sqrt{" + X.description + "} \\mid \\! 0 \\! > +  ( \\sqrt{" + Y.description + "}) e^{i^{" + Z2.description + "}} \\mid \\! 1 \\! >"
+            let text = " \\mid \\!\\! \\Psi \\!\\! > = \\sqrt{" + ZeroOutput.description + "} \\mid \\! 0 \\! > +  ( \\sqrt{" + OneOutput.description + "}) e^{i^{" + Z2.description + "}} \\mid \\! 1 \\! >"
             output.latex = text
         }
         else{
-            let text = " \\mid \\!\\! \\Psi \\!\\! > = \\sqrt{" + X.real.description + "} \\mid \\! 0 \\! > +  ( \\sqrt{" + Y.real.description + "}) e^{i^{" + Z1buffer.description + Z2.description + "}} \\mid \\! 1 \\! >"
+            let text = " \\mid \\!\\! \\Psi \\!\\! > = \\sqrt{" + ZeroOutput.description + "} \\mid \\! 0 \\! > +  ( \\sqrt{" + OneOutput.description + "}) e^{i^{" + Z1buffer.description + Z2.description + "}} \\mid \\! 1 \\! >"
             output.latex = text
         }
 
         print("Result: " , X , "  and  ", Y)
-        probSlider.value = Float(X.real*100)
-        sliderValueDisplay.text = String(X.real)
+        probSlider.value = Float(ZeroOutput*100)
+        sliderValueDisplay.text = String(ZeroOutput)
         changeBottomPlate()
         moveArrows()
+        
+        
+        
+        // Get pi Output for rotation
+        print(" X Real: " , X.real , " Imaginary ", X.imag)
+        print(" Y Real: " , Y.real , " Imaginary ", Y.imag)
+
+        
+        let z = atan(Y.real / Y.imag)
+        let z1 = atan(X.real / X.imag)
+        let result = z - z1
+
+        
+        print("RESULT: ", result)
     }
     
     /**
