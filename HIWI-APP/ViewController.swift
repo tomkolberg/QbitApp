@@ -25,11 +25,6 @@ class ViewController: UIViewController {
     //--Create Variables for Output
     var X = Complex(1,0)
     var Y = Complex(0,0)
-    var Z1 = 0.0
-    var Z2 = ""
-    
-    var prob0 = 1.0
-    var prob1 = 0.0
     
     // create scene for the qubit visualization
     let scene = SCNScene()
@@ -41,7 +36,8 @@ class ViewController: UIViewController {
     let bottomArrow = SCNNode()
     let mainArrow = SCNNode()
     
-    //--Functions
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -230,16 +226,14 @@ class ViewController: UIViewController {
         // Slider transformation
         probSlider.transform = CGAffineTransform(rotationAngle: (CGFloat.pi / -2))
 
-
-        
         
         //Create Output equasion
         // Edit Output Text
-        let text = " \\mid \\!\\! \\Psi \\!\\! > = \\sqrt{" + X.real.description + "} \\mid \\! 0 \\! > +  ( \\sqrt{" + Y.real.description + "}) e^{i^{" + Z1.description + Z2 + "}} \\mid \\! 1 \\! >"
+        let text = " \\mid \\!\\! \\Psi \\!\\! > = \\sqrt{" + X.real.description + "} \\mid \\! 0 \\! > +  ( \\sqrt{" + Y.real.description + "}) e^{i^{0}} \\mid \\! 1 \\! >"
         output.latex = text
         view.addSubview(output)
-        output.frame = CGRect(x: 40, y:100, width: 0 , height: 0)
-        output.sizeToFit()
+        output.frame = CGRect(x: 20, y:100, width: 500 , height: 40)
+        view.bringSubviewToFront(output)
 
 
     }
@@ -250,6 +244,7 @@ class ViewController: UIViewController {
     @IBAction func pobSliderBar(_ sender: Any) {
         sliderValueDisplay.text = String(round(probSlider.value)/100)
     }
+    
     
     /**
      Function that changes the Output if the 0-Button is clicked
@@ -272,7 +267,7 @@ class ViewController: UIViewController {
         changeOutput()
     }
     
-    //TODO: Transform Calculations in OutputText
+    
     /**
      Logic behind X Gate Button
      This button turns output value on X-axis around 180 degree
@@ -335,8 +330,6 @@ class ViewController: UIViewController {
         
         X = Xbuffer
         Y = Ybuffer
-
-        
         changeOutput()
     }
     
@@ -373,6 +366,7 @@ class ViewController: UIViewController {
 
         X = Xbuffer
         Y = Ybuffer
+        
         changeOutput()
     }
     
@@ -499,37 +493,62 @@ class ViewController: UIViewController {
     
     /**
      Logic Behind parametrizable Z-Plus Gate, which is dependent on the selected value of the slider
-     
-     //TODO: Not WORKING because of Complex numbers
      */
     @IBAction func RZPlusButton(_ sender: UIButton) {
-//        if(ParaGateControl.selectedSegmentIndex == 0){  // pi/8
-//
-//            let complex1 = pow(M_E, Complex(0, -(-Double.pi/16.0)))
-//            let complex2 = pow(M_E, Complex(0, (-Double.pi/16.0)))
-//
-//            let Xbuffer = X * complex1 + Y * 0
-//            let Ybuffer = X * 0 + Y * complex2
-//
-//            X = Xbuffer
-//            Y = Ybuffer
-//
-//        } else {                                        //pi/12
-//            let complex1 = pow(M_E, Complex(0, -(-Double.pi/24)))
-//            let complex2 = pow(M_E, Complex(0, (-Double.pi/24)))
-//
-//            let Xbuffer = X * complex1 + Y * 0
-//            let Ybuffer = X * 0 + Y * complex2
-//
-//            X = Xbuffer
-//            Y = Ybuffer
-//        }
+
+        if(ParaGateControl.selectedSegmentIndex == 0){  // pi/8
+
+            let val1 = Complex(0.0, -1.0) * (Double.pi / 16)
+            let val2 = Complex(0.0, 1.0) * (Double.pi / 16)
+            let res1 = Complex.exp(val1)
+            let res2 = Complex.exp(val2)
+            let Xbuffer = X * res1 + Y * 0.0
+            let Ybuffer = X * 0.0 + Y * res2
+            
+            X = Xbuffer
+            Y = Ybuffer
+        } else { //pi/12
+            let val1 = Complex(0.0, -1.0) * (Double.pi / 24)
+            let val2 = Complex(0.0, 1.0) * (Double.pi / 24)
+            let res1 = Complex.exp(val1)
+            let res2 = Complex.exp(val2)
+            let Xbuffer = X * res1 + Y * 0.0
+            let Ybuffer = X * 0.0 + Y * res2
+            
+            X = Xbuffer
+            Y = Ybuffer
+        }
+        changeOutput()
     }
     
     /**
      Logic Behind parametrizable Z-Minus Gate, which is dependent on the selected value of the slider
      */
     @IBAction func RZMinusButton(_ sender: UIButton) {
+        
+        if(ParaGateControl.selectedSegmentIndex == 0){  // pi/8
+
+            let val1 = Complex(0.0, -1.0) * (-Double.pi / 16)
+            let val2 = Complex(0.0, 1.0) * (-Double.pi / 16)
+            let res1 = Complex.exp(val1)
+            let res2 = Complex.exp(val2)
+            let Xbuffer = X * res1 + Y * 0.0
+            let Ybuffer = X * 0.0 + Y * res2
+            
+            X = Xbuffer
+            Y = Ybuffer
+        } else { //pi/12
+            let val1 = Complex(0.0, -1.0) * (-Double.pi / 24)
+            let val2 = Complex(0.0, 1.0) * (-Double.pi / 24)
+            let res1 = Complex.exp(val1)
+            let res2 = Complex.exp(val2)
+            let Xbuffer = X * res1 + Y * 0.0
+            let Ybuffer = X * 0.0 + Y * res2
+            
+            X = Xbuffer
+            Y = Ybuffer
+        }
+        changeOutput()
     }
     
     
@@ -540,50 +559,107 @@ class ViewController: UIViewController {
     
     func changeOutput(){
         
-
-        let Z1buffer = Z1
-        
         // Round Output
         let ZeroOutput = round((X.real * X.real + X.imag * X.imag ) * 100)/100
         let OneOutput = round((Y.real * Y.real + Y.imag * Y.imag ) * 100)/100
+        let azimRads = round(calcAzimRads()*100)/100
         
     
         // Create Output
-        if(Z1buffer == 1.0){
-            let text = " \\mid \\!\\! \\Psi \\!\\! > = \\sqrt{" + ZeroOutput.description + "} \\mid \\! 0 \\! > +  ( \\sqrt{" + OneOutput.description + "}) e^{i^{" + Z2.description + "}} \\mid \\! 1 \\! >"
+        if(azimRads > 0){
+            let text = " \\mid \\!\\! \\Psi \\!\\! > = \\sqrt{" + ZeroOutput.description + "} \\mid \\! 0 \\! > +  ( \\sqrt{" + OneOutput.description + "}) e^{i^{" + azimRads.description + "\\pi }} \\mid \\! 1 \\! >"
             output.latex = text
         }
         else{
-            let text = " \\mid \\!\\! \\Psi \\!\\! > = \\sqrt{" + ZeroOutput.description + "} \\mid \\! 0 \\! > +  ( \\sqrt{" + OneOutput.description + "}) e^{i^{" + Z1buffer.description + Z2.description + "}} \\mid \\! 1 \\! >"
+            let text = " \\mid \\!\\! \\Psi \\!\\! > = \\sqrt{" + ZeroOutput.description + "} \\mid \\! 0 \\! > +  ( \\sqrt{" + OneOutput.description + "}) e^{i^{" + azimRads.description + "}} \\mid \\! 1 \\! >"
             output.latex = text
         }
 
-        print("Result: " , X , "  and  ", Y)
         probSlider.value = Float(ZeroOutput*100)
         sliderValueDisplay.text = String(ZeroOutput)
         changeBottomPlate()
         moveArrows()
         
-        
-        
-        // Get pi Output for rotation
-        print(" X Real: " , X.real , " Imaginary ", X.imag)
-        print(" Y Real: " , Y.real , " Imaginary ", Y.imag)
 
         
-        let z = atan(Y.real / Y.imag)
-        let z1 = atan(X.real / X.imag)
-        let result = z - z1
+    }
+    
+    func calcAzimRads() -> Double{
+        var Xresult = 0.0
+        var Yresult = 0.0
 
+        // Calculate Polar Value for X
+        if(X.real > 0 && X.imag > 0){
+            Xresult = atan(abs(X.real)/abs(X.imag))
+        }
+        if(X.real > 0 && X.imag < 0){
+            Xresult = (-1) * atan(abs(X.real)/abs(X.imag))
+        }
+        if(X.real < 0 && X.imag < 0){
+            Xresult =  atan(abs(X.real)/abs(X.imag)) - Double.pi
+        }
+        if(X.real < 0 && X.imag > 0){
+            Xresult =  Double.pi - atan(abs(X.real)/abs(X.imag))
+        }
+        if(X.real == 0){
+            if(X.imag > 0){
+                Xresult = -Double.pi / 2
+            }
+            if(X.imag < 0){
+                Xresult = Double.pi / 2
+            }
+        }
         
-        print("RESULT: ", result)
+        if(X.imag == 0){
+            Xresult = 0
+        }
+        
+        // Calculate Polar Value for Y
+        if(Y.real > 0 && Y.imag > 0){
+            Yresult = atan(abs(Y.real)/abs(Y.imag))
+        }
+        if(Y.real > 0 && Y.imag < 0){
+            Yresult = (-1) * atan(abs(Y.real)/abs(Y.imag))
+        }
+        if(Y.real < 0 && Y.imag < 0){
+            Yresult =  atan(abs(Y.real)/abs(Y.imag)) - Double.pi
+        }
+        if(Y.real < 0 && Y.imag > 0){
+            Yresult =  Double.pi - atan(abs(Y.real)/abs(Y.imag))
+        }
+        if(Y.real == 0){
+            if(Y.imag > 0){
+                Yresult = -Double.pi / 2
+            }
+            if(Y.imag < 0){
+                Yresult = Double.pi / 2
+            }
+        }
+        
+        if(Y.imag == 0){
+            Yresult = 0
+        }
+        
+        var result = Yresult - Xresult
+        
+        if (result < 0){
+            result = 2 * Double.pi - result
+        }
+         
+        // calculates modulo, if result > 2 pi
+        if(result > (2 * Double.pi)){
+            result = result.truncatingRemainder(dividingBy: (Double.pi * 2))
+        }
+        
+        return result
+
     }
     
     /**
      Function, that changes the of the pobability plate within the bottom plate
      */
     func changeBottomPlate(){
-        let radius = 1.3*X.real
+        let radius = 1.3 * sqrt(X.real * X.real + X.imag * X.imag)
         probCircle.geometry = SCNCylinder(radius: radius, height: 0.02)
         probCircle.geometry?.firstMaterial?.diffuse.contents = UIColor.black
         probCircle.opacity = 0.5
@@ -596,8 +672,13 @@ class ViewController: UIViewController {
      */
     func moveArrows(){
 
-        bottomArrow.rotation = SCNVector4Make(0, 1, 0, Float(Double.pi)) // Rotates the Arrow
-        mainArrow.rotation = SCNVector4Make(1, 1, 0, Float(Double.pi)) // Rotates the Arrow
+        //move arrow of bottom plate
+        bottomArrow.rotation = SCNVector4Make(0, 1, 0, Float(calcAzimRads())) // Rotates the Arrow
+        
+        //TODO: Add correct rotation of main Arrow
+        //move arrow in main qbit
+        //mainArrow.rotation = SCNVector4Make(0, 0, 1, Float(calcAzimRads())) // Rotates the Arrow
+
     }
 
     
@@ -645,8 +726,9 @@ class ViewController: UIViewController {
         
         //Build mainArrow:
         mainArrow.geometry = geometry1
-        mainArrow.scale = SCNVector3(0.2, 0.1, 0.05) // change size of Arrow
+        mainArrow.scale = SCNVector3(0.3, 0.1, 0.05) // change size of Arrow
         mainArrow.position = SCNVector3(x:0, y: 0, z:0)
+        mainArrow.rotation = SCNVector4Make(0, 0, 1, Float(-Double.pi/2)) // Rotates the Arrow
         self.scene.rootNode.addChildNode(mainArrow)
         
         // Build bottomArrow
@@ -659,14 +741,5 @@ class ViewController: UIViewController {
         bottomArrow.position = SCNVector3(x:0, y: -2.5, z:0)
         self.scene.rootNode.addChildNode(bottomArrow)
     }
-    
-    func getProbability0()->Double{
-        return pow(abs(prob0), 2)
-    }
-    
-    func getProbability1()->Double{
-        return pow(abs(prob1),2)
-    }
-    
 }
 
